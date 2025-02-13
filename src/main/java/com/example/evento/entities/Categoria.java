@@ -8,7 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,6 +22,8 @@ public class Categoria {
 	@Column(columnDefinition = "TEXT")
 	private String descricao;
 	
+	@OneToMany(mappedBy = "categoria")
+	private Set<Atividade> atividades = new HashSet<>();
 	
 	public Categoria() {
 		

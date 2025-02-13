@@ -1,13 +1,14 @@
 package com.example.evento.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -23,6 +24,9 @@ public class Participante {
 	@Column(columnDefinition = "TEXT")
 	private String email;
 	
+	@OneToMany
+	@JoinColumn(name = "participante_id")
+	private Set<Atividade> atividades = new HashSet<>();
 	
 	public Participante() {
 		
